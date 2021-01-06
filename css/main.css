@@ -1,0 +1,16 @@
+body {
+    padding: 50px;
+}
+
+thead th{
+    font-weight: bold;
+}
+
+.close-msg:hover {
+    color: #000;
+    cursor: pointer;
+}
+
+.btn-proximo, .btn-anterior {
+    border-radius: 50%;
+}

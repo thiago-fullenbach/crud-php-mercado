@@ -1,0 +1,11 @@
+MER - Modelo Entidade-Relacionamento
+Banco de Dados: db_mercado
+
+----------------------- Entidades -----------------------
+
+tbl_fornecedor: CodFornecedor, NomeFornecedor
+tbl_produto: CodProduto, CodFornecedor, CodBarras, NomeProduto, Preco, QtdeEstoque
+
+----------------------- Relacionamentos -----------------------
+
+tbl_fornecedor e tbl_produto (Fornece): um-para-muitos

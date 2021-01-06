@@ -1,0 +1,49 @@
+CREATE DATABASE IF NOT EXISTS db_mercado;
+USE db_mercado;
+
+CREATE TABLE IF NOT EXISTS tbl_fornecedor(
+	CodFornecedor SMALLINT AUTO_INCREMENT PRIMARY KEY,
+	NomeFornecedor VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tbl_produto(
+	CodProduto SMALLINT AUTO_INCREMENT PRIMARY KEY,
+	CodFornecedor SMALLINT NOT NULL,
+	CodBarras VARCHAR(13) UNIQUE NOT NULL,
+	NomeProduto VARCHAR(30) NOT NULL,
+	Preco DECIMAL(6,2) NOT NULL,
+	QtdeEstoque SMALLINT NOT NULL,
+	CONSTRAINT fk_CodFornecedor FOREIGN KEY (CodFornecedor)
+	REFERENCES tbl_fornecedor(CodFornecedor)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
+);
+
+INSERT INTO tbl_fornecedor(NomeFornecedor)
+VALUES ('Bauducco'),
+('Kibom'),
+('Garoto'),
+('Nestle');
+
+INSERT INTO tbl_produto(CodFornecedor, CodBarras, NomeProduto, Preco, QtdeEstoque)
+VALUES (1, '1234567891234', 'Pão de Mel', 10.50, 150),
+(1, '2345678901234', 'Roll Chocolate', 5.25, 250),
+(1, '3456789012345', 'Recheado Choc', 4.25, 350),
+(1, '4567890123456', 'Chocotone', 8.50, 280),
+(1, '5678901234567', 'Tostadinhas', 3.25, 180),
+(2, '6789012345678', 'ChicaBom', 6.50, 150),
+(2, '7890123456789', 'EskiBom', 8.00, 180),
+(2, '8901234567890', 'Tablito', 1.50, 180),
+(2, '9012345678901', 'Mordisko', 5.25, 250),
+(3, '0123456789012', 'Batom', 1.25, 400),
+(3, '8503759375812', 'Wafer', 2.50, 100),
+(3, '7483920185079', 'Hortela', 0.80, 320),
+(3, '3810275858594', 'Talento', 3.20, 300),
+(4, '7493720164867', 'Nescau 400g', 6.25, 120),
+(4, '7483936373921', 'Passatempo', 2.50, 200),
+(4, '5554443337771', 'Choc Alpino', 4.00, 180),
+(4, '3478569012345', 'Leite Moça 200g', 2.30, 220),
+(4, '4545451112883', 'Chambinho', 3.00, 200),
+(1, '2910297361778', 'Cookies', 2.30, 200),
+(1, '2255693912345', 'Torradas Multi G', 3.40, 120),
+(1, '6655557887913', 'Panettone', 7.20, 120);
